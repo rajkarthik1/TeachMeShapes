@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -22,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     // MARK: Debug info
     private final String TAG="QUIZ";
 
-    TextView result;
+    TextView textView,result;
+    ImageView imageView;
 
     // MARK: Particle Account Info
     private final String PARTICLE_USERNAME = "rajkarthik711@gmail.com";
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         result = findViewById(R.id.result);
+        textView = findViewById(R.id.textView);
+        imageView = findViewById(R.id.imageView);
 
         // 1. Initialize your connection to the Particle API
         ParticleCloudSDK.init(this.getApplicationContext());
@@ -85,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void Ques2(){
+    }
+
 
     public void turnParticleGreen() {
 
@@ -95,13 +102,14 @@ public class MainActivity extends AppCompatActivity {
                 // --------------------------------------------
                 List<String> functionParameters = new ArrayList<String>();
                 functionParameters.add("green");
+
+                result.setText("Correct Answer!!");
                 try {
                     mDevice.callFunction("answer", functionParameters);
 
                 } catch (ParticleDevice.FunctionDoesNotExistException e1) {
                     e1.printStackTrace();
                 }
-
 
                 return -1;
             }
@@ -129,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
                 // --------------------------------------------
                 List<String> functionParameters = new ArrayList<String>();
                 functionParameters.add("red");
+                result.setText("Wrong Answer:(");
+
                 try {
                     mDevice.callFunction("answer", functionParameters);
 
@@ -159,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     public void subscribeToParticleEvents() {
         Async.executeAsync(ParticleCloudSDK.getCloud(), new Async.ApiWork<ParticleCloud, Object>() {
             @Override
@@ -176,6 +185,16 @@ public class MainActivity extends AppCompatActivity {
                                 else if (choice.contentEquals("B")) {
                                     turnParticleRed();
                                 }
+                                else if (choice.contentEquals("true")) {
+                                    textView.setText("How many Sides this Pentagon have " +
+                                            "\n A. 5 \n B. 6\n\n" +
+                                            "Enter your response using the Particle.\n\n" +
+                                            "(A = Button 4, B = Button 2)");
+                                    imageView.setImageResource(R.drawable.pentagon);
+
+
+                                }
+
 
                             }
 

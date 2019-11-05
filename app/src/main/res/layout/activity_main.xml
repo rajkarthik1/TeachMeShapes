@@ -25,7 +25,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="151dp"
-        android:text="How many Sides 3 or 4? \n A. 3 \n B. 4\n\nEnter your response using the Particle.\n\n(A = Button 3, B = Button 4)"
+        android:text="How many Sides 3 or 4? \n A. 4 \n B. 3\n\nEnter your response using the Particle.\n\n(A = Button 4, B = Button 2)"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <TextView
@@ -34,7 +34,7 @@
         android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-8dp"
-        android:layout_marginBottom="165dp"
+        android:layout_marginEnd="-3dp"
+        android:layout_marginBottom="162dp"
         android:text="Result" />
 </RelativeLayout>
