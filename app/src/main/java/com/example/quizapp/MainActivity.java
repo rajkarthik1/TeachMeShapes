@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,12 +22,14 @@ public class MainActivity extends AppCompatActivity {
     // MARK: Debug info
     private final String TAG="QUIZ";
 
+    TextView result;
+
     // MARK: Particle Account Info
-    private final String PARTICLE_USERNAME = "jenelleteaches@gmail.com";
-    private final String PARTICLE_PASSWORD = "nonsense1234";
+    private final String PARTICLE_USERNAME = "rajkarthik711@gmail.com";
+    private final String PARTICLE_PASSWORD = "Chicago@1";
 
     // MARK: Particle device-specific info
-    private final String DEVICE_ID = "36001b001047363333343437";
+    private final String DEVICE_ID = "22003f000f47363333343437";
 
     // MARK: Particle Publish / Subscribe variables
     private long subscriptionId;
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        result = findViewById(R.id.result);
 
         // 1. Initialize your connection to the Particle API
         ParticleCloudSDK.init(this.getApplicationContext());
